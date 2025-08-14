@@ -1,0 +1,11 @@
+/* Hero */
+.hero {
+  padding: 72px 0;
+  background: radial-gradient(800px 400px at 10% 10%, rgba(96,165,250,.15), transparent);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}

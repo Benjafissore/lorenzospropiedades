@@ -1,0 +1,6 @@
+/* Responsive */
+@media (max-width: 900px) {
+  .detail-layout { grid-template-columns: 1fr; }
+  .search { grid-template-columns: 1fr 1fr 1fr; }
+  .brand-logo { height: 32px; }
+}

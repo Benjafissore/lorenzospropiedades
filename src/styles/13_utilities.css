@@ -1,0 +1,7 @@
+/* Utilidades */
+.muted { color: var(--muted); }
+
+.price {
+  margin: 8px 0;
+  font-weight: 800;
+}

@@ -1,0 +1,23 @@
+/* Brand (logo + texto) */
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--header-text);
+}
+
+.brand-logo {
+  height: 80px;        /* <- ajustá a gusto */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;   /* opcional si tu logo es foto rectangular */     /* asegura el mismo blanco del header */
+}
+
+/* Si tu logo es oscuro y el header también, podés darle fondo blanco:
+.brand-logo { background: #fff; padding: 4px; box-shadow: 0 0 0 1px var(--border); }
+*/
+
+.brand-logo-text {
+  height: 80px;
+}

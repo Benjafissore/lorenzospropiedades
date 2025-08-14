@@ -1,0 +1,52 @@
+export const PROPERTIES = [
+  {
+    id: 'p-001',
+    title: 'Casa moderna con jardín',
+    type: 'Casa', // Casa | Departamento | Terreno | Local
+    operation: 'Venta', // Venta | Alquiler
+    priceUSD: 145000,
+    address: 'Av. Siempre Viva 742',
+    city: 'Córdoba',
+    province: 'Córdoba',
+    areaM2: 180,
+    rooms: 3,
+    baths: 2,
+    parking: true,
+    img: 'https://images.unsplash.com/photo-1560185008-b033106af0ea?q=80&w=1600',
+    description: 'Casa luminosa con patio y quincho. Lista para entrar a vivir.'
+  },
+  {
+    id: 'p-002',
+    title: 'Departamento céntrico 2D',
+    type: 'Departamento',
+    operation: 'Alquiler',
+    priceUSD: 450,
+    address: 'Bv. San Juan 300',
+    city: 'Córdoba',
+    province: 'Córdoba',
+    areaM2: 65,
+    rooms: 2,
+    baths: 1,
+    parking: false,
+    img: 'https://images.unsplash.com/photo-1505692952047-1a78307da8f2?q=80&w=1600',
+    description: 'Excelente ubicación, bajas expensas. Ideal estudiantes o pareja.',
+    featured: true,
+  },
+  {
+    id: 'p-003',
+    title: 'Terreno en barrio cerrado',
+    type: 'Terreno',
+    operation: 'Venta',
+    priceUSD: 38000,
+    address: 'Lote 12, Los Álamos',
+    city: 'Villa Allende',
+    province: 'Córdoba',
+    areaM2: 500,
+    rooms: 0,
+    baths: 0,
+    parking: false,
+    img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1600',
+    description: 'Lote plano con servicios. Seguridad 24hs y amenities.',
+    featured: true,
+  }
+]

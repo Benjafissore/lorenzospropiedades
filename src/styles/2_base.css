@@ -1,0 +1,36 @@
+/* Global/base */
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0b0c10, #0d1117);
+  color: var(--text);
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Fondo del Home */
+.home {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/foto.png');
+  background-repeat: no-repeat;
+  background-position: left center; /* pegada a la izquierda */
+  background-size: auto 100%; /* ajusta la altura al 100% del alto del home */
+  background-attachment: fixed; /* opcional para efecto fijo */
+}
+
+
+.home > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Secciones del Home */
+.section {
+  padding: 2rem 0;
+  /* Si querés un fondo translúcido sobre la imagen para el texto */
+  /* background-color: rgba(255, 255, 255, 0.85); */
+}
+

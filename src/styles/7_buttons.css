@@ -1,0 +1,15 @@
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #0b0c10;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-lg {
+  padding: 14px 20px;
+  border-radius: 16px;
+}
