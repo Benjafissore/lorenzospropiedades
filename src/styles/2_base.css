@@ -8,29 +8,89 @@ body {
   background: linear-gradient(180deg, #0b0c10, #0d1117);
   color: var(--text);
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  height: 1100px;
 }
 
 /* Fondo del Home */
+/* Home layout básico */
+/* ===== Base del layout Home ===== */
+
 .home {
   position: relative;
   min-height: 100vh;
-  background-image: url('/foto.png');
-  background-repeat: no-repeat;
-  background-position: left center; /* pegada a la izquierda */
-  background-size: auto 100%; /* ajusta la altura al 100% del alto del home */
-  background-attachment: fixed; /* opcional para efecto fijo */
+ /* deja espacio para la foto a la izquierda */
+  height: 1500px;
 }
 
+/* Hero full-bleed: ocupa todo el ancho de la ventana aunque esté dentro de .container */
+.hero--fullbleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
 
-.home > * {
+.hero {
   position: relative;
-  z-index: 1;
+  min-height: clamp(320px, 56vh, 680px); /* altura responsiva; si querés fija, usá height: 500px */
+  overflow: hidden;
+  height: 560px;
 }
 
-/* Secciones del Home */
-.section {
-  padding: 2rem 0;
-  /* Si querés un fondo translúcido sobre la imagen para el texto */
-  /* background-color: rgba(255, 255, 255, 0.85); */
+/* La imagen rellena el hero */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* llena sin deformar */
+  display: block;      /* evita espacio fantasma de <img> inline */
+  pointer-events: none;
 }
+
+/* (Opcional) contenido encima del video/imagen */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;   /* centra el contenido */
+  padding: 2rem;
+  color: #fff;
+  /* backdrop/filter suave si el header es claro:
+  background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.15));
+  */
+}
+
+
+
+.home-content { position: relative; z-index: 1; }
+
+/* ===== Container y grid ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section { padding: 2rem 0; }
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+  justify-content: end;  /* empuja las cards hacia la derecha */
+}
+
+.grid > * {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  :root { --left-rail: 0px; }  /* en mobile no reservamos carril */
+  .home { padding-left: 0; }
+  .home-bg { display: none; }
+  .grid { grid-template-columns: 1fr; justify-content: center; }
+}
+
+
 

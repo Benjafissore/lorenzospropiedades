@@ -6,38 +6,36 @@ export default function Home() {
   const featured = useMemo(() => PROPERTIES.filter(p => p.featured), []);
 
   return (
-    <div
-      className="home"
-      style={{
-        backgroundImage: "url('/2_foto.png')"
-      }}
-    >
-      {/* DESTACADOS */}
-      {featured.length > 0 && (
-        <section className="section">
-          <div className="container">
-            <div className="section-header">
-              <h2>Destacados</h2>
-            </div>
 
-            <div className="grid">
-              {featured.map(p => (
-                <PropertyCard key={p.id} p={p} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Ejemplo de otra sección para ver el efecto */}
-      <section className="section">
-        <div className="container">
-          <h2>Otra sección</h2>
-          <p>Este contenido también pasa por encima de la foto de fondo.</p>
-        </div>
+    <section className="home">
+      <section className="hero hero--fullbleed" aria-label="Hero">
+       <img src="/fotohero.jpg" alt="" className="hero-img" />
+       {/* Si querés texto encima:
+         <div className="hero-overlay">
+         <h1>Tu título</h1>
+         <p>Subtítulo</p>
+       </div> */}
       </section>
-    </div>
+      {/* Foto a la izquierda (no afecta el layout) */}
+      
+      <div className="home-content">
+        {featured.length > 0 && (
+          <section className="section">
+            <div className="container">
+              <div className="section-header">
+                <h2>Destacados</h2>
+              </div>
+
+              <div className="grid">
+                {featured.map(p => (<PropertyCard key={p.id} p={p} />))}
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
+    </section>
   );
 }
+
 
 

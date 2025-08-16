@@ -1,37 +1,88 @@
-/* Header */
+:root{
+  --header-solid: #0b0c10; 
+}
+
 .header {
-  position: sticky;
+  position: sticky;         
   top: 0;
-  z-index: 10;
-  background: radial-gradient(800px 400px at 10% 10%, rgba(96,165,250,.15), transparent);
-  border-bottom: 1px solid var(--header-border);
+  z-index: 2000;
+  background:
+    radial-gradient(800px 400px at 10% 10%,
+      rgb(14, 23, 34), rgba(224, 223, 223, 0.826)
+    ),
+    var(--header-solid);
+  border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .header .container {
   max-width: 100%;
   margin: 0;
-  padding-left: 30px;      /* 0 = totalmente pegado a la izquierda */
-  padding-right: 24px;  /* mantenemos margen derecho */
+  padding-left: 30px;
+  padding-right: 24px;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100px;
 }
 
-.logo {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 800;
-}
-
+.logo { text-decoration: none; color: var(--text); font-weight: 800; }
 .logo span { color: var(--accent); }
 
-.nav a {
-  text-decoration: none;
-  margin-left: 18px;
-  color: var(--header-muted);
+/* ===== NAV (modificado a “pastillas” con fondo relleno) ===== */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.nav a.active { color: var(--text); }
+.nav a { 
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+
+  padding: .5rem .9rem;               /* tamaño cómodo */
+  border-radius: 0.3rem;              /* forma de píldora */
+
+  background-color: rgba(41, 44, 47, 0.914);    /* fondo relleno */
+  color: #fff;                        /* texto claro */
+
+  transition: 
+    box-shadow .2s ease,
+    border-color .2s ease,
+    transform .05s ease,
+    opacity .2s ease;
+    
+}
+
+.nav a:hover{
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.35),   /* sombra principal, más grande */
+    0 4px 10px rgba(0,0,0,.25),    /* sombra secundaria corta */
+    0 0 0 2px rgba(255,255,255,.12) inset; /* anillo interno suave (opcional) */
+  transform: translateY(-1px);      /* levanta 1px para sentir la elevación */
+}
+
+.nav a:active {
+  transform: translateY(1px);
+  border-color: rgba(0,0,0,.2);
+}
+
+/* Ruta activa (NavLink) */
+.nav a.active,
+.nav a[aria-current="page"] {
+  border-color: rgba(0,0,0,.2);
+  box-shadow: 0 0 0 2px rgba(255,255,255,.15) inset;
+  color: #fff;
+}
+
+/* Accesibilidad: foco visible */
+.nav a:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.35);
+}
+
+

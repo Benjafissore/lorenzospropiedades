@@ -21,6 +21,8 @@
   object-fit: cover;
 }
 
-.card-body { padding: 14px; }
+.card-body {
+  padding: 14px; 
+}
 
 .card-title { margin: 0 0 6px 0; }
