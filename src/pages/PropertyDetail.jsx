@@ -13,7 +13,7 @@ export default function PropertyDetail() {
   }
 
   return (
-    <section className="detail container">
+    <section className="detail-container">
       <Link to="/propiedades" className="back">← Volver</Link>
       <div className="detail-layout">
         <img src={p.img} alt={p.title} className="detail-img" />

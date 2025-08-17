@@ -8,13 +8,14 @@
   z-index: 2000;
   background:
     radial-gradient(800px 400px at 10% 10%,
-      rgb(14, 23, 34), rgba(224, 223, 223, 0.826)
+      rgb(14, 23, 34), rgb(0, 0, 0)
     ),
     var(--header-solid);
   border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .header .container {
+  max-width: 100%;
   max-width: 100%;
   margin: 0;
   padding-left: 30px;
