@@ -1,0 +1,144 @@
+/* ===== Contact (Light) ===== */
+.contact {
+  /* Variables locales para esta página */
+  --contact-surface: #ffffff;
+  --contact-text: #111827;     /* gris muy oscuro */
+  --contact-muted: #6b7280;    /* gris medio (labels) */
+  --contact-border: #e5e7eb;   /* borde claro */
+  --contact-input-bg: #ffffff; /* inputs blancos */
+  height: 850px;
+}
+
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+.contact-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* llena sin deformar */
+  display: block;      /* evita espacio fantasma de <img> inline */
+  pointer-events: none;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;   /* centra el contenido */
+  padding: 2rem;
+  color: #fff;
+  background-color: #0b0c1036;
+}
+/* oscurece un poco la imagen para legibilidad del texto/chips */
+.contact-hero-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0, 0, 0, 0.159));
+  z-index: -1;
+}
+
+
+
+
+
+/* Layout */
+.contact h1 { margin: 0 0 16px; color: var(--contact-text); }
+
+.contact-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  padding-top: 30px;
+}
+
+
+.contact-grid { grid-template-columns: 1fr 1fr; }
+
+
+/* Tarjetas blancas */
+.contact .card {
+  background: var(--contact-surface);
+  border: 1px solid var(--contact-border);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--contact-text);
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+.contact .card h2 { margin: 0 0 12px; color: var(--contact-text); }
+
+/* Datos de contacto */
+.contact .contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: grid;
+  gap: 8px;
+}
+.contact .contact-list a {
+  color: var(--contact-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.contact .contact-list a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Mapa */
+.contact .map-wrapper {
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--contact-border);
+  aspect-ratio: 16 / 9;
+  background: #f9fafb;
+}
+.contact .map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Formulario */
+.contact .form-grid { display: grid; gap: 12px; }
+.contact .form-grid label { display: block; margin: 0 0 6px; color: var(--contact-muted); }
+
+.contact .input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--contact-border);
+  background: var(--contact-input-bg);
+  color: var(--contact-text);
+}
+.contact .input::placeholder { color: #9ca3af; }
+
+.contact .input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(96,165,250,.2); /* halo suave */
+}
+
+/* Botón (sigue usando tu --accent) */
+.contact .btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.contact .btn:disabled { opacity: .7; cursor: not-allowed; }
+
+.contact .error { color: #dc2626; font-size: .85rem; margin-top: 6px; display: block; }
+.contact .status { color: var(--contact-muted); font-size: .9rem; }
+

@@ -11,11 +11,7 @@ export default function Home() {
     <section className="home">
       <section className="hero hero--fullbleed" aria-label="Hero">
        <img src="/fotohero.jpg" alt="" className="hero-img" />
-       {/* Si querés texto encima:
-         <div className="hero-overlay">
-         <h1>Tu título</h1>
-         <p>Subtítulo</p>
-       </div> */}
+
         <div className="hero-overlay">
           <div className="container hero-panel">
             <h1 className="hero-title">Más de 15 años asesorando</h1>

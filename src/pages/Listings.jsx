@@ -29,7 +29,7 @@ export default function Listings() {
   return (
     <section className="listings">
       <div className="container">
-        <h2>Propiedades</h2>
+        <h2 className="listing-text">Propiedades</h2>
         <SearchBar />
         <div className="grid">
           {list.map(p => <PropertyCard key={p.id} p={p} />)}

@@ -18,7 +18,7 @@ export default function PropertyDetail() {
       <div className="detail-layout">
         <img src={p.img} alt={p.title} className="detail-img" />
         <div className="detail-info">
-          <h1>{p.title}</h1>
+          <h1 className="detail-title">{p.title}</h1>
           <p className="muted">{p.address}, {p.city}</p>
           <p className="price">{p.operation} · USD {p.priceUSD.toLocaleString()}</p>
           <ul className="tags">
@@ -27,7 +27,7 @@ export default function PropertyDetail() {
             {p.baths > 0 && <li>{p.baths} baños</li>}
             {p.parking && <li>Cochera</li>}
           </ul>
-          <p>{p.description}</p>
+          <p className="detail-description">{p.description}</p>
           <a className="btn btn-lg" href={mailto()}>Contactar</a>
         </div>
       </div>

@@ -1,16 +1,15 @@
 /* Search */
 .search {
-  display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr) 1fr;
-  gap: 8px;
-  margin: 12px 0;
+  display:flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .search input,
 .search select {
   padding: 10px;
-  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #0b0c10;
-  color: var(--text);
+  background: #ffffff;
+  border: #ffffff;
+  color: #514e4e;
 }

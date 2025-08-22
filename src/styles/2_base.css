@@ -30,6 +30,10 @@ body {
   min-height: 100vh;
 }
 
+.listings {
+  height: 700px;
+}
+
 /* Hero full-bleed: ocupa todo el ancho de la ventana aunque esté dentro de .container */
 .hero--fullbleed {
   width: 100vw;
@@ -127,6 +131,10 @@ body {
 
 .section-header h2 {
   color: rgba(0, 0, 0, 0.729);
+}
+
+.listing-text{
+  color: black;
 }
 
 .section { padding: 2rem 0; }

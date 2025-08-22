@@ -7,6 +7,14 @@
   padding: 20px;
 }
 
+.detail-title {
+  color: rgb(28, 29, 33);
+}
+
+.detail-description {
+  color: rgb(38, 38, 40);
+}
+
 .detail-img {
   width: 100%;
   height: 420px;
@@ -31,52 +39,10 @@
 
 
 .back {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-
-  padding: .4rem .8rem;
-  border-radius: 9999px;
-  border: 1px solid #111;     /* negro */
-  background: #fff;           /* fondo blanco */
-  color: #111;                /* texto negro */
-
+  display: inline-block;
+  margin-bottom: 10px;
   text-decoration: none;
-  font-weight: 600;
-  line-height: 1;
-
-  transition: background-color .15s ease, color .15s ease,
-              border-color .15s ease, transform .05s ease;
+  color: var(--muted);
 }
-
-/* flecha simple al inicio */
-.back::before {
-  content: "←";
-  font-size: .95rem;
-  line-height: 1;
-  transform: translateX(0);
-  transition: transform .15s ease;
-}
-
-/* hover: inversión sutil (pastilla negra, texto blanco) */
-.back:hover {
-  background: #111;
-  color: #fff;
-}
-.back:hover::before {
-  transform: translateX(-2px);
-}
-
-/* activo: reducción mínima de contraste, sin “salto” */
-.back:active {
-  opacity: .9;
-}
-
-/* foco accesible, minimal */
-.back:focus-visible {
-  outline: 2px solid #111;
-  outline-offset: 2px;
-}
-
 
 
