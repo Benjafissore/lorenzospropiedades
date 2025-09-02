@@ -25,14 +25,12 @@ body {
 
 .home {
   position: relative;
-  min-height: 100vh;
-  /* deja espacio para la foto a la izquierda */
-  min-height: 100vh;
+  min-height: 100vh; /* ocupa toda la pantalla cuando hay poco contenido */
 }
 
-.listings {
-  height: 700px;
-}
+/* QUITADO: esto hacía que el contenido se meta bajo el footer */
+/* .listings { height: 700px; } */
+.listings { /* sin altura fija */ }
 
 /* Hero full-bleed: ocupa todo el ancho de la ventana aunque esté dentro de .container */
 .hero--fullbleed {
@@ -81,7 +79,7 @@ body {
 .hero-panel { 
   color:#fff;
   padding: 0;
- }
+}
 .hero-title { 
   margin: 0 0 .75rem; 
   font-size: clamp(1.8rem, 3.6vw, 3rem); 
@@ -159,6 +157,7 @@ body {
   .grid { grid-template-columns: 1fr; justify-content: center; }
   .hero-title{ font-size: clamp(1.6rem, 6vw, 2.2rem); }
 }
+
 
 
 

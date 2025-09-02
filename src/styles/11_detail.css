@@ -45,4 +45,83 @@
   color: var(--muted);
 }
 
+/* ===== Gallery (PropertyDetail) – versión compacta y vertical ===== */
+.gallery { padding: 10px; display: grid; gap: 10px; }
+
+/* Contenedor común */
+.gallery-main {
+  position: relative;
+  margin: 0 auto;                 /* centra la imagen */
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f6f7f8;
+}
+
+/* 🔸 Vertical (default): 3:4 y tamaño contenido */
+.gallery-main.portrait {
+  width: clamp(240px, 28vw, 420px);   /* más chico */
+  aspect-ratio: 3 / 4;
+}
+.gallery-main.portrait img {
+  width: 100%; height: 100%;
+  object-fit: cover;                  /* recorta laterales si la foto es muy horizontal */
+  display: block;
+}
+
+/* Original: respeta proporción, también contenido */
+.gallery-main.fit {
+  width: clamp(280px, 40vw, 720px);   /* sigue siendo más chico que pantalla completa */
+}
+.gallery-main.fit img {
+  width: 100%; height: auto; display: block;
+}
+
+/* Cuadrado 1:1 */
+.gallery-main.square {
+  width: clamp(240px, 28vw, 420px);
+  aspect-ratio: 1 / 1;
+}
+.gallery-main.square img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+/* Flechas */
+.gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  background-color: #0b0c1032;
+  color: #0b0c10; border: none;
+  display: grid; place-items: center; font-size: 18px; font-weight: 700;
+}
+.gallery-arrow.left { left: 8px; }
+.gallery-arrow.right { right: 8px; }
+.gallery-arrow:hover { background-color: #0b0c1048; }
+
+/* Thumbnails más chicas y verticalizadas */
+.thumbs-row {
+  display: flex; gap: 8px; overflow-x: auto;
+  padding: 8px 0 2px;
+}
+.thumbs-row.centered { justify-content: center; }
+.thumb-btn {
+  border: 2px solid transparent;
+  padding: 0; border-radius: 10px; background: transparent; cursor: pointer;
+  flex: 0 0 auto;
+}
+.thumb-btn img {
+  display: block;
+  width: 60px; height: 80px;  /* 3:4 bien vertical y chico */
+  object-fit: cover; border-radius: 10px;
+}
+.thumb-btn.active { border-color: #0b0c10; }
+
+/* Barra inferior: contador + selector de modo */
+.gallery-tools {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 6px;
+}
+.gallery-tools .count { color: rgba(0,0,0,.55); font-weight: 600; }
+.gallery-tools .mode { display: flex; gap: 8px; }
+
+
 
