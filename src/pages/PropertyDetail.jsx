@@ -4,15 +4,13 @@ import { db } from "../lib/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 
 const FALLBACK =
-  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1600'><rect width='100%' height='100%' fill='%23eee'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='sans-serif' font-size='18'>Sin imagen</text></svg>";
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000'><rect width='100%' height='100%' fill='%23eee'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='sans-serif' font-size='18'>Sin imagen</text></svg>";
 
 export default function PropertyDetail() {
   const { id } = useParams();
   const [p, setP] = useState(null);
   const [loading, setLoading] = useState(true);
   const [idx, setIdx] = useState(0);
-  // 🔸 Modo por defecto: "portrait" (vertical 3:4 y tamaño contenido)
-  const [mode, setMode] = useState("portrait"); // "portrait" | "fit" | "square"
 
   useEffect(() => {
     if (!id) return;
@@ -43,7 +41,7 @@ export default function PropertyDetail() {
     return unsub;
   }, [id]);
 
-  // Navegación con teclado
+  // flechas teclado
   useEffect(() => {
     function onKey(e) {
       if (!p?.images?.length || e.altKey || e.metaKey || e.ctrlKey) return;
@@ -73,24 +71,26 @@ export default function PropertyDetail() {
   }
 
   return (
-    <section className="container" style={{ padding: 16 }}>
-      <Link className="btn" to="/propiedades">← Volver</Link>
+    <section className="container detail-wrap">
+      <div className="detail-top">
+        <Link className="btn" to="/propiedades">← Volver</Link>
+      </div>
 
-      <article className="card" style={{ marginTop: 12 }}>
-        {/* Galería */}
-        <div className="gallery">
-          <div className={`gallery-main ${mode}`}>
+      <div className="detail-grid">
+        {/* Galería SIN fondo ni card */}
+        <div className="detail-gallery">
+          <div className="gallery-main square">
             <img src={current} alt={p.title} loading="eager" fetchPriority="high" />
             {total > 1 && (
               <>
-                <button className="gallery-arrow left btn" onClick={prev} aria-label="Foto anterior">‹</button>
-                <button className="gallery-arrow right btn" onClick={next} aria-label="Foto siguiente">›</button>
+                <button className="gallery-arrow left" onClick={prev} aria-label="Foto anterior">‹</button>
+                <button className="gallery-arrow right" onClick={next} aria-label="Foto siguiente">›</button>
               </>
             )}
           </div>
 
           {total > 1 && (
-            <div className="thumbs-row centered">
+            <div className="thumbs-row">
               {imgs.map((url, i) => (
                 <button
                   key={url + i}
@@ -103,19 +103,10 @@ export default function PropertyDetail() {
               ))}
             </div>
           )}
-
-          <div className="gallery-tools">
-            <span className="count">{idx + 1}/{total}</span>
-            <div className="mode">
-              <button className={`btn ${mode === "portrait" ? "primary" : ""}`} onClick={() => setMode("portrait")}>Vertical</button>
-              <button className={`btn ${mode === "fit" ? "primary" : ""}`} onClick={() => setMode("fit")}>Original</button>
-              <button className={`btn ${mode === "square" ? "primary" : ""}`} onClick={() => setMode("square")}>Cuadrado</button>
-            </div>
-          </div>
         </div>
 
-        {/* Detalle */}
-        <div className="card-body">
+        {/* Info SIN card */}
+        <div className="detail-info">
           <h1 className="card-title" style={{ marginTop: 0 }}>{p.title}</h1>
           <p className="price" style={{ marginTop: 4 }}>
             {p.city} {p.address ? `• ${p.address}` : ""} • {p.bedrooms ?? 0} dorm • {p.bathrooms ?? 0} baños • {p.area_m2 ?? 0} m²
@@ -129,10 +120,11 @@ export default function PropertyDetail() {
             </p>
           )}
         </div>
-      </article>
+      </div>
     </section>
   );
 }
+
 
 
 

@@ -45,83 +45,149 @@
   color: var(--muted);
 }
 
-/* ===== Gallery (PropertyDetail) – versión compacta y vertical ===== */
-.gallery { padding: 10px; display: grid; gap: 10px; }
+/* ===== Detalle: layout sin card/fondos ===== */
+.detail-wrap { 
+  padding: 16px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0,0,0,.04);
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.08),
+    0 4px 12px rgba(0,0,0,.06);
+}
 
-/* Contenedor común */
+ 
+.detail-top { margin-bottom: 12px; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 520px) 1fr; /* fotos a la izq, info a la der */
+  gap: 24px;
+  align-items: start;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1rem;
+}
+@media (max-width: 900px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}
+
+/* Galería sin fondo */
+.detail-gallery { display: grid; gap: 10px; }
 .gallery-main {
   position: relative;
-  margin: 0 auto;                 /* centra la imagen */
+  margin: 0;
   border-radius: 14px;
   overflow: hidden;
-  background: #f6f7f8;
+  background: transparent; /* sin fondo */
 }
 
-/* 🔸 Vertical (default): 3:4 y tamaño contenido */
-.gallery-main.portrait {
-  width: clamp(240px, 28vw, 420px);   /* más chico */
-  aspect-ratio: 3 / 4;
+/* Solo cuadrado */
+.gallery-main.square {
+  width: 100%;
+  max-width: 520px;      /* controla tamaño */
+  aspect-ratio: 1 / 1;   /* cuadrado */
 }
-.gallery-main.portrait img {
-  width: 100%; height: 100%;
-  object-fit: cover;                  /* recorta laterales si la foto es muy horizontal */
+.gallery-main.square img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* recorte prolijo */
   display: block;
 }
 
-/* Original: respeta proporción, también contenido */
-.gallery-main.fit {
-  width: clamp(280px, 40vw, 720px);   /* sigue siendo más chico que pantalla completa */
-}
-.gallery-main.fit img {
-  width: 100%; height: auto; display: block;
-}
-
-/* Cuadrado 1:1 */
-.gallery-main.square {
-  width: clamp(240px, 28vw, 420px);
-  aspect-ratio: 1 / 1;
-}
-.gallery-main.square img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
-
-/* Flechas */
+/* ===== Flechas: rail más ancho + expansión con sombra en hover ===== */
 .gallery-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 34px; height: 34px; border-radius: 50%;
-  background-color: #0b0c1032;
-  color: #0b0c10; border: none;
-  display: grid; place-items: center; font-size: 18px; font-weight: 700;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 84px;                /* área clickeable más ancha */
+  border: 0;
+  background: transparent;    /* sin franja por defecto */
+  color: #fff;                /* flecha blanca */
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: opacity .2s ease;
 }
-.gallery-arrow.left { left: 8px; }
-.gallery-arrow.right { right: 8px; }
-.gallery-arrow:hover { background-color: #0b0c1048; }
+.gallery-arrow.left  { left: 0;  justify-content: flex-start; padding-left: 14px; }
+.gallery-arrow.right { right: 0; justify-content: flex-end;   padding-right: 14px; }
 
-/* Thumbnails más chicas y verticalizadas */
+/* Rail (solo aparece en hover) */
+.gallery-arrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;                    /* ocupa todo el alto del botón */
+  background: transparent;     /* invisible por defecto */
+  opacity: 0;
+  transform: scaleX(.65);      /* arranca un poco comprimido */
+  transform-origin: left center;
+  transition: opacity .28s ease, transform .28s ease;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+/* Hover: degradado + sombra interna, con leve expansión */
+.gallery-arrow.left:hover::after {
+  /* degradado que se disipa hacia el centro (sin corte brusco) */
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,.50) 0%,
+    rgba(0,0,0,.38) 40%,
+    rgba(0,0,0,.18) 75%,
+    rgba(0,0,0,0)   100%
+  );
+  /* sombra interna suave para que el borde no se corte de golpe */
+  box-shadow: inset -18px 0 28px rgba(0,0,0,.42), inset 0 0 14px rgba(0,0,0,.25);
+  opacity: 1;
+  transform: scaleX(1.08);     /* leve expansión hacia adentro */
+  transform-origin: left center;
+}
+
+.gallery-arrow.right:hover::after {
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,.50) 0%,
+    rgba(0,0,0,.38) 40%,
+    rgba(0,0,0,.18) 75%,
+    rgba(0,0,0,0)   100%
+  );
+  box-shadow: inset 18px 0 28px rgba(0,0,0,.42), inset 0 0 14px rgba(0,0,0,.25);
+  opacity: 1;
+  transform: scaleX(1.08);
+  transform-origin: right center;
+}
+
+/* Si por accidente queda .btn en las flechas, anulamos el fondo */
+.gallery-arrow.btn { background: transparent !important; }
+
+
+
+
+
+
+/* Thumbnails cuadradas y chicas */
 .thumbs-row {
   display: flex; gap: 8px; overflow-x: auto;
-  padding: 8px 0 2px;
+  padding: 4px 0;
 }
-.thumbs-row.centered { justify-content: center; }
 .thumb-btn {
   border: 2px solid transparent;
   padding: 0; border-radius: 10px; background: transparent; cursor: pointer;
   flex: 0 0 auto;
 }
 .thumb-btn img {
-  display: block;
-  width: 60px; height: 80px;  /* 3:4 bien vertical y chico */
-  object-fit: cover; border-radius: 10px;
+  display: block; width: 70px; height: 70px; object-fit: cover; border-radius: 10px;
 }
 .thumb-btn.active { border-color: #0b0c10; }
 
-/* Barra inferior: contador + selector de modo */
-.gallery-tools {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 6px;
-}
-.gallery-tools .count { color: rgba(0,0,0,.55); font-weight: 600; }
-.gallery-tools .mode { display: flex; gap: 8px; }
+/* Columna de info sin card */
+.detail-info { padding-top: 4px; }
+
 
 
 

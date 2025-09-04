@@ -186,7 +186,7 @@ export default function Carousel({
       {showArrows && images.length > 1 && (
         <>
           <button
-            className="carousel__arrow carousel__arrow--left"
+            className="gallery-arrow left"
             aria-label="Anterior"
             onClick={prev}
             type="button"

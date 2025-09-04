@@ -7,6 +7,7 @@ import PropertyDetail from "./pages/PropertyDetail.jsx";
 import Contact from "./pages/Contact.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import WhatsAppFab from "./components/WhatsAppFab";
 
 // 🔐 Paso 5: Auth + rutas protegidas
 import AuthProvider from "./context/AuthContext.jsx";
@@ -52,6 +53,7 @@ export default function App() {
             />
           </Routes>
         </main>
+        <WhatsAppFab />
         <Footer />
       </div>
     </AuthProvider>

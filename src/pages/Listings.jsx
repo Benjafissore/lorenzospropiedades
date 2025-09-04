@@ -60,7 +60,7 @@ export default function Listings() {
 
   return (
     <section className="listings">
-      <div className="container">
+      <div className="container-listing">
         <h2 className="listing-text">Propiedades</h2>
         <SearchBar />
 
