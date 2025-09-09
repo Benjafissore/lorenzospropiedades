@@ -70,12 +70,9 @@ export default function Contact() {
               📞 <a href="tel:+54 9 3585 04 9328">+54 9 3585 04 9328</a>
             </li>
             <li>
-              ✉️ <a href="mailto:info@tusitio.com">info@tusitio.com</a>
-            </li>
-            <li>
               💬{" "}
               <a
-                href="https://wa.me/5491100000000"
+                href="https://wa.me/5493585049328"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -83,7 +80,7 @@ export default function Contact() {
               </a>{" "}
               ·{" "}
               <a
-                href="https://instagram.com/tucuenta"
+                href="https://instagram.com/lorenzospropiedades"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -91,7 +88,7 @@ export default function Contact() {
               </a>{" "}
               ·{" "}
               <a
-                href="https://facebook.com/tucuenta"
+                href="https://facebook.com/profile.php?id=61576778300387&locale=es_LA"
                 target="_blank"
                 rel="noopener noreferrer"
               >

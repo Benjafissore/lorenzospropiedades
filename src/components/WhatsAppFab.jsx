@@ -1,7 +1,7 @@
 export default function WhatsAppFab() {
   // Reemplazá con tu número en formato internacional SIN '+' ni espacios.
   // Ej: Argentina (Córdoba) 351-1234567 -> "5493511234567"
-  const phone = "5493511234567";
+  const phone = "5493585049328";
 
   const currentUrl =
     typeof window !== "undefined" && window.location ? window.location.href : "";

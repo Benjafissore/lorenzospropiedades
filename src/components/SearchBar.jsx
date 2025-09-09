@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 export default function SearchBar() {
   const [params, setParams] = useSearchParams();
 
-  const bedrooms  = params.get("bedrooms") || ""; // antes era q
+  const bedrooms  = params.get("bedrooms") || "";
   const city      = params.get("city") || "";
   const type      = params.get("type") || "";
   const operation = params.get("operation") || "";
@@ -36,8 +36,8 @@ export default function SearchBar() {
         aria-label="Operación"
       >
         <option value="">Venta o Alquiler</option>
-        <option>Venta</option>
-        <option>Alquiler</option>
+        <option value="Venta">Venta</option>
+        <option value="Alquiler">Alquiler</option>
       </select>
 
       <select
@@ -47,10 +47,10 @@ export default function SearchBar() {
         aria-label="Tipo"
       >
         <option value="">Tipo</option>
-        <option>Casa</option>
-        <option>Departamento</option>
-        <option>Terreno</option>
-        <option>Local</option>
+        <option value="Casa">Casa</option>
+        <option value="Departamento">Departamento</option>
+        <option value="Terreno">Terreno</option>
+        <option value="Local">Local</option>
       </select>
 
       <input
@@ -64,5 +64,6 @@ export default function SearchBar() {
     </div>
   );
 }
+
 
 
